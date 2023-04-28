@@ -52,23 +52,23 @@ public class SpawnManager : MonoBehaviour
         }
 
         //spawn mini boss.
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(120.0f);
         while (!_stopSpawning)
         {
             Vector3 posToSpawn = new Vector3(Random.Range(-8f, 8f), 7, 0);
-            GameObject newEnemy = Instantiate(_listeEnemyPrefabs[0], posToSpawn, Quaternion.identity);
-            newEnemy.transform.parent = _listeEnemyPrefabs[0].transform;
-            yield return new WaitForSeconds(5.0f);
+            GameObject newEnemy = Instantiate(_listeEnemyPrefabs[1], posToSpawn, Quaternion.identity);
+            newEnemy.transform.parent = _listeEnemyPrefabs[1].transform;
+            yield return new WaitForSeconds(120.0f);
         }
 
         //spawn enemy de base.
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(300.0f);
         while (!_stopSpawning)
         {
             Vector3 posToSpawn = new Vector3(Random.Range(-8f, 8f), 7, 0);
-            GameObject newEnemy = Instantiate(_listeEnemyPrefabs[0], posToSpawn, Quaternion.identity);
-            newEnemy.transform.parent = _listeEnemyPrefabs[0].transform;
-            yield return new WaitForSeconds(5.0f);
+            GameObject newEnemy = Instantiate(_listeEnemyPrefabs[2], posToSpawn, Quaternion.identity);
+            newEnemy.transform.parent = _listeEnemyPrefabs[2].transform;
+            yield return new WaitForSeconds(300.0f);
         }
 
     }
