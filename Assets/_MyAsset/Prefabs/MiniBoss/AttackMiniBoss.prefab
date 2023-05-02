@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3156527453405778739}
-  - component: {fileID: 822800284901240592}
   m_Layer: 0
   m_Name: AttackMiniBoss
   m_TagString: Untagged
@@ -35,20 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &822800284901240592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6008534754786610006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb36cd835c3d78f47a146bc65b02c78e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 25
-  _enemy: 1
 --- !u!1001 &8520911645944453726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62,11 +47,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 916172924156464578, guid: 290a8b85c423b494191484417e8215a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.425
+      value: 3.699
       objectReference: {fileID: 0}
     - target: {fileID: 916172924156464578, guid: 290a8b85c423b494191484417e8215a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.948
+      value: -3.739
       objectReference: {fileID: 0}
     - target: {fileID: 916172924156464578, guid: 290a8b85c423b494191484417e8215a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -124,11 +109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 916172924156464578, guid: 290a8b85c423b494191484417e8215a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.998
+      value: 4.142
       objectReference: {fileID: 0}
     - target: {fileID: 916172924156464578, guid: 290a8b85c423b494191484417e8215a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.495
+      value: -2.603
       objectReference: {fileID: 0}
     - target: {fileID: 916172924156464578, guid: 290a8b85c423b494191484417e8215a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -186,11 +171,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 916172924156464578, guid: 290a8b85c423b494191484417e8215a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.96
+      value: 5.672
       objectReference: {fileID: 0}
     - target: {fileID: 916172924156464578, guid: 290a8b85c423b494191484417e8215a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.17
+      value: -2.372
       objectReference: {fileID: 0}
     - target: {fileID: 916172924156464578, guid: 290a8b85c423b494191484417e8215a8, type: 3}
       propertyPath: m_LocalPosition.z

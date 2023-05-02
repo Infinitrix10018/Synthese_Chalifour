@@ -51,35 +51,35 @@ public class SpawnManager : MonoBehaviour
             GameObject newEnemy = Instantiate(_listeEnemyPrefabs[0], posToSpawn, Quaternion.identity);
             //newEnemy.transform.parent = _listeEnemyPrefabs[0].transform;
             yield return new WaitForSeconds(5.0f);
-            Debug.Log("Enemy de base");
+            //Debug.Log("Enemy de base");
         }
     }
 
     IEnumerator SpawnMiniBossRoutine()
     {
         //spawn mini boss.
-        yield return new WaitForSeconds(120.0f);
+        yield return new WaitForSeconds(1.0f);
         while (!_stopSpawning)
         {
             Vector3 posToSpawn = new Vector3(15, Random.Range(-4f, 4f), 0);
             GameObject newEnemy = Instantiate(_listeEnemyPrefabs[1], posToSpawn, Quaternion.identity);
             //newEnemy.transform.parent = _listeEnemyPrefabs[1].transform;
             yield return new WaitForSeconds(120.0f);
-            Debug.Log("mini boss");
+            //Debug.Log("mini boss");
         }
     }
 
     IEnumerator SpawnBossRoutine()
     {
         //spawn enemy de base.
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(300.0f);
         while (!_stopSpawning)
         {
             Vector3 posToSpawn = new Vector3(15, Random.Range(-4f, 4f), 0);
             GameObject newEnemy = Instantiate(_listeEnemyPrefabs[2], posToSpawn, Quaternion.identity);
             //newEnemy.transform.parent = _listeEnemyPrefabs[2].transform;
             yield return new WaitForSeconds(300.0f);
-            Debug.Log("boss");
+            //Debug.Log("boss");
         }
 
     }

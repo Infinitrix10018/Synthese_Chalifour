@@ -65,15 +65,24 @@ public class Enemy : MonoBehaviour
 
     private void EnemyAttack()
     {
-        if (_idEnemy != 2) 
+
+        if (_idEnemy == 0) 
         {
             if(Time.time > _canFire)
             {
                 _canFire = Time.time + _fireRate;
-                Instantiate(_laserPreFab, transform.position + new Vector3(-5.2f, 0.2f, 0f), Quaternion.identity);
+                Instantiate(_laserPreFab, transform.position + new Vector3(-5f, 0f, 0f), Quaternion.identity);
             }
         }
-        
+        else if (_idEnemy == 1)
+        {
+            if (Time.time > _canFire)
+            {
+                _canFire = Time.time + _fireRate;
+                Instantiate(_laserPreFab, transform.position + new Vector3(-4f, 3f, 0f), Quaternion.identity);
+            }
+        }
+
     }
 
     IEnumerator BossAttack()
