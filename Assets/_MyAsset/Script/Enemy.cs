@@ -6,14 +6,16 @@ public class Enemy : MonoBehaviour
 {
     //Serialize field
     [SerializeField] private float _speed = 10f;
-    [SerializeField] private float _fireRate = 0.5f;
+    [SerializeField] private float _fireRate = 1.5f;
     [SerializeField] int _playerLives = 5;
+    [SerializeField] int _idEnemy = 2; // 0 = boss, 1 = mini boss et 2 = ennemy par default
     //Serialize field with object
     [SerializeField] private GameObject _laserPreFab = default;
     [SerializeField] private AudioClip _laserSound = default;
 
     //other variables
-    private bool _canFire = true;
+    private float _canFire = -1f;
+    private bool _exist = true; //the while need a variable to work
 
     //other variables with object
     private Animator _anime;
@@ -23,65 +25,65 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Fire());
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Mouvement();
-       
+        EnemyAttack();
+        MouvementEnemy();
     }
 
-    IEnumerator Fire()
+    private void MouvementEnemy()
     {
-        yield return new WaitForSeconds( _fireRate );
-        while (_canFire)
+        switch(_idEnemy)
         {
-            AudioSource.PlayClipAtPoint(_laserSound, Camera.main.transform.position, 0.2f);
+            case 0:
+                transform.Translate(Vector3.left * Time.deltaTime * _speed);
+                transform.position = new Vector3( Mathf.Clamp(transform.position.x, 5f, 17f), transform.position.y, 0);
+                break;
+
+            case 1:
+                transform.Translate(Vector3.left * Time.deltaTime * _speed);
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, 2f, 17f), transform.position.y, 0);
+                break;
+
+            case 2:
+                transform.Translate(Vector3.left * Time.deltaTime * _speed);
+
+            break;
+        }
+
+        if (transform.position.x < -15f)
+        {
+            float _randomX = Random.Range(-4f, 4f);
+
+            transform.position = new Vector3(15f, _randomX, 0f);
+        }
+    }
+
+    private void EnemyAttack()
+    {
+        if (_idEnemy != 2) 
+        {
+            if(Time.time > _canFire)
+            {
+                _canFire = Time.time + _fireRate;
+                Instantiate(_laserPreFab, transform.position + new Vector3(-5.2f, 0.2f, 0f), Quaternion.identity);
+            }
+        }
+        
+    }
+
+    IEnumerator BossAttack()
+    {
+        yield return new WaitForSeconds(1f);
+        while( _exist == true )
+        {
             Instantiate(_laserPreFab, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity);
-            yield return new WaitForSeconds(_fireRate);
+            yield return new WaitForSeconds(1.0f);
         }
     }
-
-    private void Mouvement()
-    {
-        float positionH = Input.GetAxis("Horizontal");
-        float positionV = Input.GetAxis("Vertical");
-
-        Vector3 direction = new Vector3(positionH, positionV, 0);
-        transform.Translate(direction * Time.deltaTime * _speed);
-
-        /*
-        if (positionH < 0f)
-        {
-            _anime.SetBool("GoUp", true);
-            _anime.SetBool("GoDown", false);
-        }
-        else if (positionH > 0f)
-        {
-            _anime.SetBool("GoUp", false);
-            _anime.SetBool("GoDown", true);
-        }
-        else
-        {
-            _anime.SetBool("GoUp", false);
-            _anime.SetBool("GoDown", false);
-        }
-        */
-
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -4.1f, 0.5f), 0);
-        //transform.position = new Vector3(Mathf.Clamp(transform.position.x, -8.9f, 8.9f), Mathf.Clamp(transform.position.y, -4.1f, 0.5f), 0);
-
-        if (transform.position.x >= 8.9f)
-        {
-            transform.position = new Vector3(-8.9f, transform.position.y, 0);
-        }
-        else if (transform.position.x <= -8.9f)
-        {
-            transform.position = new Vector3(8.9f, transform.position.y, 0);
-        }
-    }
-
 
 }

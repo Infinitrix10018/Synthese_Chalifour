@@ -473,9 +473,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3a9e5a436bdec42946ac61ae2ba5bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 3
   _fireRate: 0.5
   _playerLives: 10
+  _idEnemy: 0
   _laserPreFab: {fileID: 8826847568835978062, guid: 12b0a5574ef2acc498cfb1c3fb4a2671, type: 3}
   _laserSound: {fileID: 0}
 --- !u!50 &4818266283614173223

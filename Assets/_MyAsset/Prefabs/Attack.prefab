@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 916172924156464578}
   - component: {fileID: 3017467308390003118}
   - component: {fileID: 2796341494012085123}
+  - component: {fileID: -5819751983817358075}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -130,3 +131,17 @@ PolygonCollider2D:
       - {x: 0.0949738, y: -0.020039529}
       - {x: 0.09489894, y: 0.019952089}
       - {x: 0.08507916, y: 0.020095883}
+--- !u!114 &-5819751983817358075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3654493312145267255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb36cd835c3d78f47a146bc65b02c78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 25
+  _enemy: 1

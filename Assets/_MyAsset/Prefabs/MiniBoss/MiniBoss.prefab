@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 643687516846249814}
   - component: {fileID: 643687516846249813}
   - component: {fileID: 643687516846249812}
+  - component: {fileID: -5015583488861196559}
   m_Layer: 0
   m_Name: MiniBoss
   m_TagString: Untagged
@@ -558,6 +559,24 @@ PolygonCollider2D:
       - {x: 0.05883175, y: -1.8893068}
       - {x: 0.35883293, y: -1.902154}
       - {x: 0.5175178, y: -1.7817895}
+--- !u!114 &-5015583488861196559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643687516846249819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3a9e5a436bdec42946ac61ae2ba5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
+  _fireRate: 1.5
+  _playerLives: 5
+  _idEnemy: 1
+  _laserPreFab: {fileID: 6008534754786610006, guid: 51945eb4565fe6c4585f75f7eead9f83, type: 3}
+  _laserSound: {fileID: 0}
 --- !u!1 &643687517195798218
 GameObject:
   m_ObjectHideFlags: 0

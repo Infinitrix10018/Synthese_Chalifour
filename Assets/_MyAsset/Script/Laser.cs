@@ -5,14 +5,15 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     [SerializeField] private float _speed = 25f;
-    [SerializeField] private bool _enemy = false;
+    [SerializeField] private bool _enemy = true;
 
     void Update()
     {
         if (_enemy)
         {
-            transform.Translate(Vector3.right * _speed * Time.deltaTime);
-            if (transform.position.x > 9f)
+            Debug.Log("test");
+            transform.Translate(Vector3.left * _speed * Time.deltaTime);
+            if (transform.position.x < -15f)
             {
                 Destroy(gameObject);
             }
@@ -20,7 +21,7 @@ public class Laser : MonoBehaviour
         else if(!_enemy)
         {
             transform.Translate(Vector3.right * _speed * Time.deltaTime);
-            if (transform.position.x > 9f)
+            if (transform.position.x > 15f)
             {
                 Destroy(gameObject);
             }
