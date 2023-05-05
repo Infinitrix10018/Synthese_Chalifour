@@ -8,6 +8,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject[] _listeEnemyPrefabs = default;
     [SerializeField] private GameObject _ObjectContainer = default;
     private bool _stopSpawning = false;
+    private float _timerBoss = 300f;
+    private float _timerMiniBoss = 120f;
+    public float _timerEnemy = 3f;
 
     void Start()
     {
@@ -44,13 +47,13 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnEnemyRoutine()
     {
         //spawn enemy de base.
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(_timerEnemy);
         while (!_stopSpawning)
         {
             Vector3 posToSpawn = new Vector3( 15, Random.Range(-4f, 4f), 0);
             GameObject newEnemy = Instantiate(_listeEnemyPrefabs[0], posToSpawn, Quaternion.identity);
             //newEnemy.transform.parent = _listeEnemyPrefabs[0].transform;
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(_timerEnemy);
             //Debug.Log("Enemy de base");
         }
     }
@@ -58,13 +61,14 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnMiniBossRoutine()
     {
         //spawn mini boss.
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(_timerMiniBoss);
         while (!_stopSpawning)
         {
             Vector3 posToSpawn = new Vector3(15, Random.Range(-4f, 4f), 0);
             GameObject newEnemy = Instantiate(_listeEnemyPrefabs[1], posToSpawn, Quaternion.identity);
             //newEnemy.transform.parent = _listeEnemyPrefabs[1].transform;
-            yield return new WaitForSeconds(120.0f);
+            _timerMiniBoss *= 0.9f;
+            yield return new WaitForSeconds(_timerMiniBoss);
             //Debug.Log("mini boss");
         }
     }
@@ -72,13 +76,14 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnBossRoutine()
     {
         //spawn enemy de base.
-        yield return new WaitForSeconds(300.0f);
+        yield return new WaitForSeconds(_timerBoss);
         while (!_stopSpawning)
         {
             Vector3 posToSpawn = new Vector3(15, Random.Range(-4f, 4f), 0);
             GameObject newEnemy = Instantiate(_listeEnemyPrefabs[2], posToSpawn, Quaternion.identity);
+            _timerBoss *= 0.9f;
             //newEnemy.transform.parent = _listeEnemyPrefabs[2].transform;
-            yield return new WaitForSeconds(300.0f);
+            yield return new WaitForSeconds(_timerBoss);
             //Debug.Log("boss");
         }
 

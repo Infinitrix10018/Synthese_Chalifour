@@ -20,7 +20,7 @@ public class Laser : MonoBehaviour
         }
         else if(!_enemy)
         {
-            transform.Translate(Vector3.left * _speed * Time.deltaTime);
+            transform.Translate(Vector3.right * _speed * Time.deltaTime);
             if (transform.position.x > 15f)
             {
                 Destroy(gameObject);
