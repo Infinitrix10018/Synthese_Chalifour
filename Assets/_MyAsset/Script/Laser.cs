@@ -7,6 +7,16 @@ public class Laser : MonoBehaviour
 {
     [SerializeField] private float _speed = 25f;
     [SerializeField] private bool _enemy = true;
+    [SerializeField] private GameObject _prefabExplosion = default;
+
+    private Player _player;
+
+
+
+    private void Start()
+    {
+        _player= GetComponent<Player>();
+    }
 
     void Update()
     {
@@ -31,4 +41,18 @@ public class Laser : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player" && _enemy)
+        {
+            _player.EmotionalDamage();
+            Instantiate(_prefabExplosion, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
+
+
+
+
 }

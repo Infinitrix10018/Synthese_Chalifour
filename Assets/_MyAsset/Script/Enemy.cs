@@ -12,20 +12,26 @@ public class Enemy : MonoBehaviour
     //Serialize field with object
     [SerializeField] private GameObject _laserPreFab = default;
     [SerializeField] private AudioClip _laserSound = default;
+    [SerializeField] private GameObject _prefabExplosion = default;
 
     //other variables
     private float _canFire = -1f;
     private bool _exist = true; //the while need a variable to work
+    private int _point = 0;
 
     //other variables with object
     private Animator _anime;
+    private Player _player;
+    private UIManager _UIManager = default;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        _player = FindObjectOfType<Player>();
+        _UIManager = FindObjectOfType<UIManager>();
+        PointPerEnemy();
     }
 
     // Update is called once per frame
@@ -97,12 +103,40 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.tag == "Player")
+        {
+            Destroy(collision.gameObject);
+            _UIManager.UpdateScore(_point);
+            Debug.Log("enemy hit!");
+            BigEmotionalDamage();
+        }
+        else if (collision.tag == "Laser")
+        {
+            _player.EmotionalDamage();
+            BigEmotionalDamage();
+        }
     }
 
+    private void BigEmotionalDamage()
+    {
+        Instantiate(_prefabExplosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
 
-
-
+    private void PointPerEnemy()
+    {
+        switch(_idEnemy)
+        {
+            case 0: _point = 4500;
+                break;
+            case 1:
+                _point = 1000;
+                break;
+            case 2:
+                _point = 100;
+                break;
+        }
+    }
 
 
 

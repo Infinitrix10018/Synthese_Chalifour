@@ -15,11 +15,13 @@ public class Player : MonoBehaviour
     private float _canAttack1 = -1f;
     private float _canAttack2 = 0.25f;
 
+    private UIManager _UIManager = default;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _UIManager = FindObjectOfType<UIManager>();
     }
 
     private void Update()
@@ -86,7 +88,7 @@ public class Player : MonoBehaviour
     public void EmotionalDamage()
     {
         _playerLife--;
-
+        _UIManager.UpdateLive(_playerLife);
         if(_playerLife <= 0 )
         {
             Destroy(this.gameObject);
