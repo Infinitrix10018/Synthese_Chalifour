@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float _attack2Time = 1f;
     [SerializeField] private int _playerLife = 5;
 
-
     private float _canAttack1 = -1f;
     private float _canAttack2 = 0.25f;
 
@@ -55,12 +54,12 @@ public class Player : MonoBehaviour
         }
         */
         //Gérer la zone verticale
-        transform.position = new Vector3( Mathf.Clamp(transform.position.x, -8.8f, 0f), transform.position.y, 0f);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -8.8f, 0f), transform.position.y, 0f);
 
         //Gérer dépassement horizontaux
         if (transform.position.y >= 5.3)
         {
-            transform.position = new Vector3( transform.position.x,-5.3f, 0f);
+            transform.position = new Vector3(transform.position.x, -5.3f, 0f);
         }
         else if (transform.position.y <= -5.3)
         {
@@ -70,7 +69,7 @@ public class Player : MonoBehaviour
 
     private void Fire()
     {
-        if (Input.GetAxis("Fire1") == 1 && Time.time> _canAttack1)
+        if (Input.GetAxis("Fire1") == 1 && Time.time > _canAttack1)
         {
             _canAttack1 = Time.time + _attack1Time;
 
@@ -89,17 +88,25 @@ public class Player : MonoBehaviour
     {
         _playerLife--;
         _UIManager.UpdateLive(_playerLife);
-        if(_playerLife <= 0 )
+        if (_playerLife <= 0)
         {
             Destroy(this.gameObject);
         }
     }
 
+    public int getPlayerLive()
+    {
+        return _playerLife;
+    }
 
-
-
-
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "LaserEnemy")
+        {
+            Debug.Log("attaque d'énemi contre le joueur");
+            EmotionalDamage();
+        }
+    }
 
 
 

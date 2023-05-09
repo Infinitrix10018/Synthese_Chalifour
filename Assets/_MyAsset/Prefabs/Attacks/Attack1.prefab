@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: _enemy
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5819751983817358075, guid: 290a8b85c423b494191484417e8215a8, type: 3}
+      propertyPath: _isEnemy
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 916172924156464578, guid: 290a8b85c423b494191484417e8215a8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -54,6 +58,10 @@ PrefabInstance:
     - target: {fileID: 916172924156464578, guid: 290a8b85c423b494191484417e8215a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2796341494012085123, guid: 290a8b85c423b494191484417e8215a8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3654493312145267255, guid: 290a8b85c423b494191484417e8215a8, type: 3}
       propertyPath: m_Name

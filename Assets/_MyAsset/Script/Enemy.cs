@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     //Serialize field
     [SerializeField] private float _speed = 10f;
     [SerializeField] private float _fireRate = 1.5f;
-    [SerializeField] int _playerLives = 5;
+    [SerializeField] int _EnemyLives = 1; // boss = 10, mini boss = 5 enemy = 1
     [SerializeField] int _idEnemy = 2; // 0 = boss, 1 = mini boss et 2 = ennemy par default
     //Serialize field with object
     [SerializeField] private GameObject _laserPreFab = default;
@@ -23,15 +23,18 @@ public class Enemy : MonoBehaviour
     private Animator _anime;
     private Player _player;
     private UIManager _UIManager = default;
+    private SpawnManager _spawnManager = default;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        _spawnManager = FindObjectOfType<SpawnManager>();
         _player = FindObjectOfType<Player>();
         _UIManager = FindObjectOfType<UIManager>();
         PointPerEnemy();
+
     }
 
     // Update is called once per frame
@@ -85,7 +88,7 @@ public class Enemy : MonoBehaviour
             if (Time.time > _canFire)
             {
                 _canFire = Time.time + _fireRate;
-                Instantiate(_laserPreFab, transform.position + new Vector3(-4f, 3f, 0f), Quaternion.identity);
+                Instantiate(_laserPreFab, transform.position + new Vector3(-5f, 3f, 0f), Quaternion.identity);
             }
         }
 
@@ -105,40 +108,63 @@ public class Enemy : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Destroy(collision.gameObject);
-            _UIManager.UpdateScore(_point);
-            Debug.Log("enemy hit!");
+            DamageEnemy(1);
+            _player.EmotionalDamage();
+            //Debug.Log("enemy hit!");
             BigEmotionalDamage();
+        }
+        else if (collision.tag == "Laser2")
+        {
+            DamageEnemy(5);
         }
         else if (collision.tag == "Laser")
         {
-            _player.EmotionalDamage();
-            BigEmotionalDamage();
+            Destroy(collision.gameObject);
+            DamageEnemy(1);
         }
     }
 
     private void BigEmotionalDamage()
     {
         Instantiate(_prefabExplosion, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     private void PointPerEnemy()
     {
         switch(_idEnemy)
         {
-            case 0: _point = 4500;
+            case 0: 
+                _point = 15000; Debug.Log("boss");
+                _EnemyLives = 15;
                 break;
             case 1:
-                _point = 1000;
+                _point = 5000;
+                _EnemyLives = 5;
                 break;
             case 2:
                 _point = 100;
+                _EnemyLives = 1;
                 break;
         }
     }
 
+    private void DamageEnemy(int damage)
+    {
+        _EnemyLives -= damage;
 
+        if (_idEnemy == 0 || _idEnemy == 1)
+        {
+            //Debug.Log(_EnemyLives);
+        }
+
+        if (_EnemyLives <= 0)
+        {
+            BigEmotionalDamage();
+            _UIManager.UpdateScore(_point);  
+            Destroy(gameObject);
+        }
+    }
 
 
 

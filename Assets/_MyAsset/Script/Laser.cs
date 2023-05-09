@@ -6,7 +6,7 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     [SerializeField] private float _speed = 25f;
-    [SerializeField] private bool _enemy = true;
+    [SerializeField] private bool _isEnemy = true;
     [SerializeField] private GameObject _prefabExplosion = default;
 
     private Player _player;
@@ -20,7 +20,7 @@ public class Laser : MonoBehaviour
 
     void Update()
     {
-        if (_enemy)
+        if (_isEnemy)
         {
             transform.Translate(Vector3.right * _speed * Time.deltaTime);
             if (transform.position.x < -15f)
@@ -28,7 +28,7 @@ public class Laser : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if(!_enemy)
+        else if(!_isEnemy)
         {
             transform.Translate(Vector3.right * _speed * Time.deltaTime);
             if (transform.position.x > 15f)
@@ -44,8 +44,10 @@ public class Laser : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player" && _enemy)
+        //Debug.Log(collision.tag);
+        if(collision.gameObject.name == "Player" && _isEnemy)
         {
+            Debug.Log("attack laser enemy");
             _player.EmotionalDamage();
             Instantiate(_prefabExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);

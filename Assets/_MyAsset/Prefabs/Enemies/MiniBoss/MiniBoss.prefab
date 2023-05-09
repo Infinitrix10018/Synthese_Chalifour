@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: -5015583488861196559}
   m_Layer: 0
   m_Name: MiniBoss
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,7 +289,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -573,10 +573,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _fireRate: 1.5
-  _playerLives: 5
+  _EnemyLives: 5
   _idEnemy: 1
   _laserPreFab: {fileID: 6008534754786610006, guid: 51945eb4565fe6c4585f75f7eead9f83, type: 3}
   _laserSound: {fileID: 0}
+  _prefabExplosion: {fileID: 2354410037243338051, guid: 12aa0d18757eb954cb55874dd7cc755a, type: 3}
 --- !u!1 &643687517195798218
 GameObject:
   m_ObjectHideFlags: 0

@@ -102,7 +102,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -479,6 +479,7 @@ MonoBehaviour:
   _idEnemy: 0
   _laserPreFab: {fileID: 8826847568835978062, guid: 12b0a5574ef2acc498cfb1c3fb4a2671, type: 3}
   _laserSound: {fileID: 0}
+  _prefabExplosion: {fileID: 2354410037243338051, guid: 12aa0d18757eb954cb55874dd7cc755a, type: 3}
 --- !u!50 &4818266283614173223
 Rigidbody2D:
   serializedVersion: 4

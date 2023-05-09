@@ -12,13 +12,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _txtPointage = default;
     [SerializeField] private TextMeshProUGUI _txtTemps = default;
 
-
+    private Player _player;
+    private SpawnManager _spawnManager;
+    private bool _isTimeReduced = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _spawnManager = FindObjectOfType<SpawnManager>();
+        _player = FindObjectOfType<Player>();
+        UpdateLive(_player.getPlayerLive());
+        UpdateScore(_score);
     }
 
     // Update is called once per frame
@@ -36,6 +41,16 @@ public class UIManager : MonoBehaviour
     {
         _score += point;
         _txtPointage.text = "pointage : " + _score;
+
+        if (_score % 5000 == 0 && _isTimeReduced == false)
+        {
+            _spawnManager.ReduceTime();
+            _isTimeReduced = true;
+        }
+        else if (_score % 5000 != 0 && _isTimeReduced == true)
+        {
+            _isTimeReduced = false;
+        }
     }
 
     public void UpdateTime()
