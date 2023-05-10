@@ -156,4 +156,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 25
   _isEnemy: 0
-  _prefabExplosion: {fileID: 0}
+  _prefabExplosion: {fileID: 2354410037243338051, guid: 12aa0d18757eb954cb55874dd7cc755a, type: 3}

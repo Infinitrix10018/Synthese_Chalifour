@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 916172924156464578}
   - component: {fileID: 3017467308390003118}
   - component: {fileID: 2796341494012085123}
-  - component: {fileID: -5819751983817358075}
+  - component: {fileID: 2460125461452462956}
   m_Layer: 0
   m_Name: Attack
   m_TagString: LaserEnemy
@@ -131,7 +131,7 @@ PolygonCollider2D:
       - {x: 0.0949738, y: -0.020039529}
       - {x: 0.09489894, y: 0.019952089}
       - {x: 0.08507916, y: 0.020095883}
---- !u!114 &-5819751983817358075
+--- !u!114 &2460125461452462956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,4 +145,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 25
   _isEnemy: 1
-  _prefabExplosion: {fileID: 0}
+  _prefabExplosion: {fileID: 2354410037243338051, guid: 12aa0d18757eb954cb55874dd7cc755a, type: 3}
