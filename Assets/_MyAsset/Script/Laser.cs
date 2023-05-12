@@ -22,7 +22,7 @@ public class Laser : MonoBehaviour
     {
         if (_isEnemy)
         {
-            transform.Translate(Vector3.left * _speed * Time.deltaTime);
+            transform.Translate(Vector3.right * _speed * Time.deltaTime);
             if (transform.position.x < -15f)
             {
                 Destroy(gameObject);
@@ -44,10 +44,8 @@ public class Laser : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
-        if(collision.gameObject.name == "Player" && _isEnemy)
+        if(collision.gameObject.tag == "Player" && _isEnemy)
         {
-            Debug.Log("attack laser enemy");
             _player.EmotionalDamage();
             Instantiate(_prefabExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);

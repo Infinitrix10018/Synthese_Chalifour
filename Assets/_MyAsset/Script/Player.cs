@@ -10,17 +10,20 @@ public class Player : MonoBehaviour
     [SerializeField] private float _attack1Time = 0.2f;
     [SerializeField] private float _attack2Time = 1f;
     [SerializeField] private int _playerLife = 5;
+    [SerializeField] private GameObject _prefabAnimAttack2 = default;
 
     private float _canAttack1 = -1f;
     private float _canAttack2 = 0.25f;
 
     private UIManager _UIManager = default;
+    private SpawnManager _spawnManager = default;
 
 
     // Start is called before the first frame update
     void Start()
     {
         _UIManager = FindObjectOfType<UIManager>();
+        _spawnManager= FindObjectOfType<SpawnManager>();
     }
 
     private void Update()
@@ -81,6 +84,7 @@ public class Player : MonoBehaviour
             _canAttack2 = Time.time + _attack2Time;
 
             Instantiate(_prefabAttack2, (transform.position + new Vector3(2.5f, -0.25f, 0f)), Quaternion.identity);
+            Instantiate(_prefabAnimAttack2, (transform.position + new Vector3(2.6f, -0.25f, 0f)), Quaternion.identity);
         }
     }
 
@@ -90,7 +94,8 @@ public class Player : MonoBehaviour
         _UIManager.UpdateLive(_playerLife);
         if (_playerLife <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+            _spawnManager.OnPlayerDeath();
         }
     }
 

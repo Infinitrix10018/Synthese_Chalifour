@@ -94,16 +94,6 @@ public class Enemy : MonoBehaviour
 
     }
 
-    IEnumerator BossAttack()
-    {
-        yield return new WaitForSeconds(1f);
-        while( _exist == true )
-        {
-            Instantiate(_laserPreFab, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity);
-            yield return new WaitForSeconds(1.0f);
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -135,12 +125,12 @@ public class Enemy : MonoBehaviour
         switch(_idEnemy)
         {
             case 0: 
-                _point = 15000; Debug.Log("boss");
-                _EnemyLives = 15;
+                _point = 15000; 
+                _EnemyLives = 25;
                 break;
             case 1:
                 _point = 5000;
-                _EnemyLives = 5;
+                _EnemyLives = 10;
                 break;
             case 2:
                 _point = 100;
@@ -153,16 +143,19 @@ public class Enemy : MonoBehaviour
     {
         _EnemyLives -= damage;
 
-        if (_idEnemy == 0 || _idEnemy == 1)
-        {
-            //Debug.Log(_EnemyLives);
-        }
-
         if (_EnemyLives <= 0)
         {
             BigEmotionalDamage();
             _UIManager.UpdateScore(_point);  
             Destroy(gameObject);
+
+            if(_idEnemy == 0 || _idEnemy == 1)
+            {
+                int aScore = _UIManager.GetScore();
+                _spawnManager.ReduceTime(aScore);
+            }
+
+
         }
     }
 

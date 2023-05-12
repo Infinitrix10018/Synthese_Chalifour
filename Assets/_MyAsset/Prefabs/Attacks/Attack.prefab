@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3017467308390003118}
   - component: {fileID: 2796341494012085123}
   - component: {fileID: 2460125461452462956}
+  - component: {fileID: -3605950432513612609}
   m_Layer: 0
   m_Name: Attack
   m_TagString: LaserEnemy
@@ -146,3 +147,24 @@ MonoBehaviour:
   _speed: 25
   _isEnemy: 1
   _prefabExplosion: {fileID: 2354410037243338051, guid: 12aa0d18757eb954cb55874dd7cc755a, type: 3}
+--- !u!50 &-3605950432513612609
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3654493312145267255}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0

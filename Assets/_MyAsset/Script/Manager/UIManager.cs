@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
 
         if (_score % 5000 == 0 && _isTimeReduced == false)
         {
-            _spawnManager.ReduceTime();
+            _spawnManager.ReduceTime(_score);
             _isTimeReduced = true;
         }
         else if (_score % 5000 != 0 && _isTimeReduced == true)
@@ -57,5 +57,10 @@ public class UIManager : MonoBehaviour
     {
         float temp = Time.time; //float temps = Time.time - _gestionJeu.GetTempsDepart();
         _txtTemps.text = "Temps : " + temp.ToString("f2");
+    }
+
+    public int GetScore()
+    {
+        return _score;
     }
 }

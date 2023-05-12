@@ -10,8 +10,9 @@ public class SpawnManager : MonoBehaviour
     private bool _stopSpawning = false;
     private float _timerBoss = 90f;
     private float _timerMiniBoss = 30f;
-    public float _timerEnemy = 3f;
-    private bool _bossTime = false;
+    private float _timerEnemy = 3f;
+
+
 
     void Start()
     {
@@ -23,14 +24,12 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine(SpawnEnemyRoutine());
         StartCoroutine(SpawnBossRoutine());
         StartCoroutine(SpawnMiniBossRoutine());
-        Debug.Log("début spawns");
-        Debug.Log(_listeEnemyPrefabs.Length);
     }
 
     IEnumerator SpawnEnemyRoutine()
     {
         //spawn enemy de base.
-        yield return new WaitForSeconds(1111f);
+        yield return new WaitForSeconds(_timerEnemy);
         while (!_stopSpawning)
         {
             Vector3 posToSpawn = new Vector3( 15, Random.Range(-4f, 4f), 0);
@@ -54,7 +53,7 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnBossRoutine()
     {
         //spawn enemy de base.
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(_timerBoss/2);
         while (!_stopSpawning)
         {
             Vector3 posToSpawn = new Vector3(15, Random.Range(-4f, 4f), 0);
@@ -69,13 +68,16 @@ public class SpawnManager : MonoBehaviour
         _stopSpawning = true;
     }
 
-    public void ReduceTime()
+    public void ReduceTime(int score)
     {
         // Le taux de spawn est 4/5 du précédent
         _timerBoss *= 0.8f;
         _timerMiniBoss *= 0.8f;
-        _timerEnemy *= 0.8f;
+        _timerEnemy *= 0.5f;
     }
+
+
+        
 
 
 }

@@ -197,7 +197,7 @@ Transform:
   m_GameObject: {fileID: 643687516846249819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.05, y: -3.04, z: -0.06353034}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 643687516648713658}
@@ -572,10 +572,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _fireRate: 1.5
+  _fireRate: 2
   _EnemyLives: 5
   _idEnemy: 1
-  _laserPreFab: {fileID: 3654493312145267255, guid: 290a8b85c423b494191484417e8215a8, type: 3}
+  _laserPreFab: {fileID: 6008534754786610006, guid: 51945eb4565fe6c4585f75f7eead9f83, type: 3}
   _laserSound: {fileID: 0}
   _prefabExplosion: {fileID: 2354410037243338051, guid: 12aa0d18757eb954cb55874dd7cc755a, type: 3}
 --- !u!1 &643687517195798218
