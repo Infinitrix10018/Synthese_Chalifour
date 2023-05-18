@@ -16,7 +16,6 @@ public class Enemy : MonoBehaviour
 
     //other variables
     private float _canFire = -1f;
-    private bool _exist = true; //the while need a variable to work
     private int _point = 0;
 
     //other variables with object
@@ -81,6 +80,7 @@ public class Enemy : MonoBehaviour
             {
                 _canFire = Time.time + _fireRate;
                 Instantiate(_laserPreFab, transform.position + new Vector3(-5f, 0f, 0f), Quaternion.identity);
+                AudioSource.PlayClipAtPoint(_laserSound, Camera.main.transform.position, 0.2f);
             }
         }
         else if (_idEnemy == 1)
@@ -89,6 +89,7 @@ public class Enemy : MonoBehaviour
             {
                 _canFire = Time.time + _fireRate;
                 Instantiate(_laserPreFab, transform.position + new Vector3(-5f, 3f, 0f), Quaternion.identity);
+                AudioSource.PlayClipAtPoint(_laserSound, Camera.main.transform.position, 0.2f);
             }
         }
 

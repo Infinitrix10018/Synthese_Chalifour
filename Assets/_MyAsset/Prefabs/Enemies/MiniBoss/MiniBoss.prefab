@@ -576,7 +576,7 @@ MonoBehaviour:
   _EnemyLives: 5
   _idEnemy: 1
   _laserPreFab: {fileID: 6008534754786610006, guid: 51945eb4565fe6c4585f75f7eead9f83, type: 3}
-  _laserSound: {fileID: 0}
+  _laserSound: {fileID: 8300000, guid: 033b1daf4512444018111f90f909d172, type: 3}
   _prefabExplosion: {fileID: 2354410037243338051, guid: 12aa0d18757eb954cb55874dd7cc755a, type: 3}
 --- !u!1 &643687517195798218
 GameObject:

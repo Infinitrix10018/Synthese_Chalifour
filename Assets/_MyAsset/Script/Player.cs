@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
 
     private UIManager _UIManager = default;
     private SpawnManager _spawnManager = default;
+    private Animator _anim;
+    private ManagerOfScene _managerOfScene = default;
 
 
     // Start is called before the first frame update
@@ -24,6 +26,8 @@ public class Player : MonoBehaviour
     {
         _UIManager = FindObjectOfType<UIManager>();
         _spawnManager= FindObjectOfType<SpawnManager>();
+        _anim = GetComponent<Animator>();
+        _managerOfScene= FindObjectOfType<ManagerOfScene>();
     }
 
     private void Update()
@@ -39,23 +43,23 @@ public class Player : MonoBehaviour
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0f);
         transform.Translate(direction * Time.deltaTime * _speed);
 
-        /*
-        if (horizontalInput < 0)
+        
+        if (verticalInput < 0)
         {
-            _anim.SetBool("Turn_Left", true);
-            _anim.SetBool("Turn_Right", false);
+            _anim.SetBool("GoDown", true);
+            _anim.SetBool("GoUp", false);
         }
-        else if (horizontalInput > 0)
+        else if (verticalInput > 0)
         {
-            _anim.SetBool("Turn_Left", false);
-            _anim.SetBool("Turn_Right", true);
+            _anim.SetBool("GoDown", false);
+            _anim.SetBool("GoUp", true);
         }
         else
         {
-            _anim.SetBool("Turn_Left", false);
-            _anim.SetBool("Turn_Right", false);
+            _anim.SetBool("GoDown", false);
+            _anim.SetBool("GoUp", false);
         }
-        */
+        
         //Gérer la zone verticale
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -8.8f, 0f), transform.position.y, 0f);
 
@@ -96,6 +100,8 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
             _spawnManager.OnPlayerDeath();
+            _managerOfScene.SceneEnd();
+            _UIManager.PlayerDeath();
         }
     }
 

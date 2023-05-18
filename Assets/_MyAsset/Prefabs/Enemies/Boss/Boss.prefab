@@ -478,7 +478,7 @@ MonoBehaviour:
   _EnemyLives: 5
   _idEnemy: 0
   _laserPreFab: {fileID: 8826847568835978062, guid: 12b0a5574ef2acc498cfb1c3fb4a2671, type: 3}
-  _laserSound: {fileID: 0}
+  _laserSound: {fileID: 8300000, guid: 5f3b12efe1cd3402cb905001e349e8aa, type: 3}
   _prefabExplosion: {fileID: 2354410037243338051, guid: 12aa0d18757eb954cb55874dd7cc755a, type: 3}
 --- !u!50 &4818266283614173223
 Rigidbody2D:

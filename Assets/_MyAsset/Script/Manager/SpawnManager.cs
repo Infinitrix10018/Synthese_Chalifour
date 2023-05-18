@@ -6,7 +6,6 @@ public class SpawnManager : MonoBehaviour
 {
     //[SerializeField] private GameObject _enemyPrefab = default;
     [SerializeField] private GameObject[] _listeEnemyPrefabs = default;
-    [SerializeField] private GameObject _ObjectContainer = default;
     private bool _stopSpawning = false;
     private float _timerBoss = 90f;
     private float _timerMiniBoss = 30f;

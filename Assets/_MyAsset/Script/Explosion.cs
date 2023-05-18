@@ -13,7 +13,7 @@ public class Explosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //AudioSource.PlayClipAtPoint(_explosionSound, Camera.main.transform.position, 0.3f);
+        AudioSource.PlayClipAtPoint(_explosionSound, Camera.main.transform.position, 0.15f);
         Destroy(gameObject, _time);
     }
 
