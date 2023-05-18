@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _prefabAttack1 = default;
     [SerializeField] private GameObject _prefabAttack2 = default;
     [SerializeField] private float _attack1Time = 0.2f;
-    [SerializeField] private float _attack2Time = 1f;
+    [SerializeField] private float _attack2Time = 2f;
     [SerializeField] private int _playerLife = 5;
     [SerializeField] private GameObject _prefabAnimAttack2 = default;
 
