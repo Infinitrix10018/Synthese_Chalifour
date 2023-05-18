@@ -14,15 +14,6 @@ public class UIStartManager : MonoBehaviour
     void Start()
     {
         _isInstructionOn = false;
-        int nbrGestionJeu = FindObjectsOfType<UIStartManager>().Length;
-        if (nbrGestionJeu > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
     }
 
     // Update is called once per frame

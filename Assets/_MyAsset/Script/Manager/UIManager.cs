@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     private Player _player;
     private SpawnManager _spawnManager;
     private UIStartManager _startManager;
+    private ManagerOfGame _gameManager;
 
     private bool _isTimeReduced = false;
     private float _timeDeath;
@@ -30,7 +31,7 @@ public class UIManager : MonoBehaviour
         UpdateLive(_player.getPlayerLive());
         UpdateScore(_score);
         _startManager = FindObjectOfType<UIStartManager>();
-        _timeStart = _startManager.GetTime();
+        _gameManager = FindObjectOfType<ManagerOfGame>();
     }
 
     // Update is called once per frame
@@ -63,7 +64,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTime()
     {
-        float temp = Time.time - _timeStart; //float temps = Time.time - _gestionJeu.GetTempsDepart();
+        float temp = Time.time - _gameManager.getStartTime(); //float temps = Time.time - _gestionJeu.GetTempsDepart();
         _txtTemps.text = "Temps : " + temp.ToString("f2");
     }
 
@@ -74,7 +75,7 @@ public class UIManager : MonoBehaviour
 
     public void PlayerDeath()
     {
-        _timeDeath = Time.time - _timeStart;
+        _gameManager.Setscore(_score);
     }
 
 

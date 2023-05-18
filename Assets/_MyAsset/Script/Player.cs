@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private SpawnManager _spawnManager = default;
     private Animator _anim;
     private ManagerOfScene _managerOfScene = default;
+    private ManagerOfGame _managerOfGame = default;
 
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         _spawnManager= FindObjectOfType<SpawnManager>();
         _anim = GetComponent<Animator>();
         _managerOfScene= FindObjectOfType<ManagerOfScene>();
+        _managerOfGame = FindObjectOfType<ManagerOfGame>();
     }
 
     private void Update()
@@ -102,6 +104,7 @@ public class Player : MonoBehaviour
             _spawnManager.OnPlayerDeath();
             _managerOfScene.SceneEnd();
             _UIManager.PlayerDeath();
+            _managerOfGame.SetTimeEnd();
         }
     }
 
